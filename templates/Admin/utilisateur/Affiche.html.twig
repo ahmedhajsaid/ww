@@ -1,0 +1,53 @@
+{% extends'Admin/index.html.twig' %}
+{% block title %} Utilisateur
+{% endblock %}
+{% block body %}
+
+    <body class="">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger mt-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <h1>Liste des utilisateur</h1>
+    <div class="float-right" style="margin-right: 90px">
+
+    </div><br>
+    <table border="0" width="90%" align="center">
+        <tr>
+
+            <th>EMAIL </th>
+            <th> NOM</th>
+            <th>PRENOM </th>
+            <th>TELEPHONE </th>
+            <th>POSITION </th>
+            <th>Equipe </th>
+            <th>PositionEquipe </th>
+            <th>Categorie </th>
+
+            <td> Delete</td>
+        </tr>
+        <tr {% for u in Utilisateur %}>
+            <td>{{ u.id }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.nom }}</td>
+            <td>{{ u.prenom }}</td>
+            <td>{{ u.telephone }}</td>
+            <td>{{ u.position }}</td>
+            <td>{{ u.equipe }}</td>
+            <td>{{ u.positionEquipe }}</td>
+            <td>{{ u.categorie }}</td>
+
+            <td><a href="{{ path('d',{'id':u.id}) }}"> Delete</a> </td>
+        </tr {% endfor %}>
+
+
+    </table>
+
+    </body>
+{% endblock %}

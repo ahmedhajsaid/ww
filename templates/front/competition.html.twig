@@ -1,0 +1,52 @@
+{% extends'front/base.html.twig' %}
+{% block title %} competition
+{% endblock %}
+{% block body %}
+    <div class="kode-subheader subheader-height">
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+    <div class="kode-content">
+    <h1>Liste des Competition</h1>
+
+    <table border="1" width="90%" align="center">
+
+
+
+        <tr >
+            <th>desgniation</th> <th>Date debut</th><th>Nombre des equipe</th><th>categorie</th><th>prix du participation</th>
+
+        </tr>
+
+
+
+
+        <tr {% for c in Competition %}  >
+
+            <td>{{ c.designation }}</td>
+
+            <td>{{ c.dateDebut }}</td>
+            <td>{{ c.nbreEquipes }}</td>
+            <td>{{ c.categorie.getDesignation() }}</td>
+
+            <td>{{ c.prixParticipation }}</td>
+
+
+            <td style="display: inline-block">
+
+                <form >
+
+                    <a href="{{ path ('participe', {'id':c.id}) }}" class="btn btn-success" >Participe</a>
+                </form>
+            </td>
+        </tr {% endfor %} >
+
+    </table>
+
+
+
+
+{% endblock%}

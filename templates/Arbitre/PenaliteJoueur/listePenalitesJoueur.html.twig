@@ -1,0 +1,99 @@
+{% extends 'Arbitre/index.html.twig' %}
+
+{% block body %}
+            <h3> LISTE DES Penalites Joueurs </h3>
+
+
+    <!--new update -->
+
+   <!-- <br>
+    <table class="table" widht="100%" cellspacing="10px">
+        <tr>
+            <td>
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"  aria-describedby="search-addon" />
+            </td>
+            <button id="btnSearch" class="btn-dark btn-lg">Search</button>
+            </td>
+        </tr>
+    </table>
+
+
+  new update -->
+
+
+            <div class="row mt">
+                <div class="col-md-12">
+                    <div class="content-panel">
+                        <table class="table table-striped table-advance table-hover">
+                            <h4>
+                                    <div class="float-right" style="margin-right: 90px">
+                                        <a href="{{ path('penaliteJoueur') }}" class="btn btn-primary"> Ajouter une Penalite</a>
+                                        <a href="{{ path('pdf') }}" class="btn btn-primary"> PDF</a>
+                                    </div><br>
+
+                                </h4>
+                            <hr>
+                            <thead>
+                            <tr>
+
+
+
+
+                                <th>joueur</th>
+
+                                <th>penalite</th>
+
+
+
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                         <tr {% for pj in penaliteJoueur %}  >
+
+                             <td>{{ pj.getJoueur().getNom() }} {{ pj.getJoueur().getPrenom() }}</td>
+                             <td>{{ pj.getPenalite().getDesignation() }}</td>
+
+
+
+
+
+
+                        <td style="display: inline-block">
+                                    <button class="btn btn-success btn-xs"><i class="fa fa-check"></a>
+                                            <form method="post" action="{{ path ('updatePenaliteJoueur', {id: pj.id}) }}"  onsubmit="return confirm('êtes vous sûr de modifier cette Penalite Joueur? ')">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_method" value="Update">
+
+                                                <input type="hidden" name="_token" value="{{ csrf_token('Update' ~ pj.id) }}">
+                                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></a>
+                                            </form>
+                                                    <form method="post" action="{{ path ('dpj', {id: pj.id}) }}"  onsubmit="return confirm('êtes vous sûr de supprimer cette Penalite joueur ? ')">
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ pj.id) }}">
+                                                        <button class="btn btn-danger btn-xs"><p class="fa fa-trash-o "></button>
+
+                                                    </form>
+
+
+
+                              <!--  <td>
+    <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+    <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+    <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+</td>-->
+</tr {% endfor %} >
+
+</tbody>
+</table>
+</div>
+<!-- /content-panel -->
+</div>
+<!-- /col-md-12 -->
+</div>
+<!-- /row -->
+</section>
+</section>
+<!-- /MAIN CONTENT -->
+<!--main content end-->
+{% endblock %}

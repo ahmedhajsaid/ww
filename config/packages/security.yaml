@@ -1,0 +1,33 @@
+security:
+    encoders:
+      App\Entity\Utilisateur:
+        algorithm: auto
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+      # used to reload user from session & other features (e.g. switch_user)
+      app_user_provider:
+        entity:
+          class: App\Entity\Utilisateur
+          property: email
+    firewalls:
+      dev:
+        pattern: ^/(_(profiler|wdt)|css|images|js)/
+        security: false
+      main:
+        anonymous: lazy
+        provider: app_user_provider
+        guard:
+          authenticators:
+            - App\Security\UtilisateurAuthenticator
+        logout:
+          path: app_logout
+          # where to redirect after logout
+          # target: app_any_route
+    access_control:
+        - { path: ^/adminn, roles: ROLE_ADMIN }
+        - { path: ^/client, roles: ROLE_USER }
+        - { path: ^/prop, roles: ROLE_PROP }
+        - { path: ^/arbitre, roles: ROLE_ARBITRE }
+
+

@@ -1,0 +1,17 @@
+{% extends'front/base.html.twig' %}
+
+{% block title %} Contact {% endblock %}
+
+{% block body %}
+    <div><br><br><br><br><br><br><br><br></div>
+    <div class="text-primary">
+        <div class="col-md-6 text-dark"  >
+            {% for message in app.flashes('message')%}
+
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor%}
+            <h1>Participer</h1>
+            {{ form(contactForm) }}</div></div>
+{% endblock %}

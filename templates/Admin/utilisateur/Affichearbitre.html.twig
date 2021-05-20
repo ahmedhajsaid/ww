@@ -1,0 +1,49 @@
+{% extends'Admin/index.html.twig' %}
+{% block title %} arbitre
+{% endblock %}
+{% block body %}
+
+    <body class="">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger mt-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <h1>Liste des Arbitre</h1>
+    <div class="float-right" style="margin-right: 90px">
+
+    </div><br>
+    <table border="0" width="90%" align="center">
+        <tr>
+            <th> ID</th>
+            <th>EMAIL </th>
+            <th> NOM</th>
+            <th>PRENOM </th>
+
+            <th>Equipe </th>
+                   <th>TELEPHONE </th>
+            {% if is_granted('ROLE_PROP')%}
+            <td>UPDATE</td>
+            <td> Delete</td>
+            {% endif %}
+        </tr>
+        <tr {% for u in Utilisateur %}>
+            <td>{{ u.id }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.nom }}</td>
+            <td>{{ u.prenom }}</td>
+            <td>{{ u.equipe }}</td>
+            <td>{{ u.telephone }}</td>
+            {% if is_granted('ROLE_PROP')%}
+            <td><a href="{{ path('a',{'id':u.id}) }}"> Update</a> </td>
+            <td><a href="{{ path('d',{'id':u.id}) }}"> Delete</a> </td>
+            {% endif %}
+        </tr {% endfor %}>
+    </table>
+    </body>
+{% endblock %}

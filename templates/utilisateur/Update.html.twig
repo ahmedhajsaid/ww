@@ -1,0 +1,25 @@
+{% extends'Admin/index.html.twig' %}
+{% block title %} update arbitre
+{% endblock %}
+{% block body %}
+
+    <body class="">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger mt-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+    x
+    <div class="float-right" style="margin-right: 90px">
+
+    </div><br>
+    <h1>Update arbitre</h1>
+    {{ form(f, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    </body>
+{% endblock %}

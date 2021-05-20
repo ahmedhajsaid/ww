@@ -1,0 +1,44 @@
+<h1 align="center" style="color: #0d66c2"> Liste des réservations </h1>
+                <table id="t" class="table" align="center" border="1">
+
+
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Heure</th>
+                        <th>Terrain</th>
+                        <th>Client</th>
+                        <th>Montant</th>
+
+                    </tr>
+                    </thead>
+
+                    <tbody id="all">
+                    {% for r in reservations %}
+                    <tr >
+
+                        <td width="100px" align="center">{{ r.dateReservation|date('Y:m:d') }}</td>
+                        <td width="100px" align="center">{{ r.heure|date('h:m:s')  }}</td>
+
+                        <td width="100px" align="center">{{ r.terrain.getDesignation() }}</td>
+                        <td width="100px" align="center">{{ r.client.getNom }}</td>
+                        <td width="100px" align="center">{{ r.montant }}.000</td>
+
+
+
+
+
+                    </tr >
+                    {% endfor %}
+
+                    </tbody>
+                    <tbody id="search">
+
+
+
+                    </tbody>
+                </table>
+
+
+
+

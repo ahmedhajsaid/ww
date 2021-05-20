@@ -1,0 +1,369 @@
+{% extends'front/base.html.twig' %}
+{% block title %} Equipe
+{% endblock %}
+{% block body %}
+    <div class="kode-subheader subheader-height">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Team Detail</h1>
+                </div>
+                <div class="col-md-6">
+                    <ul class="kode-breadcrumb">
+                        <li><a href="{{ asset('/equipe/invitation') }}">Inviter vos amis</a></li>
+                        <li><a href="{{ asset('/votredemande') }}">Accepter demande</a></li>
+                        <li><a href="{{ asset('/equipe/creematch') }}"> Defi une equipe</a></li>
+                        <li><a href="{{ asset('/calender') }}"> List des matche</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader //-->
+
+    <!--// Main Content //-->
+    <div class="kode-content">
+
+        <!--// Page Content //-->
+        <section class="kode-pagesection">
+            <div class="container">
+                <div class="row">
+
+                    <div class="kode-pagecontent col-md-9">
+
+                        <div class="row">
+                            <div class="col-md-7">
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="kode-detail-element">
+                            <h2>{{ nomequipe }}</h2>
+                            <ul class="kode-team-network">
+                                <li><a class="fa fa-facebook" href="#"></a></li>
+                                <li><a class="fa fa-twitter" href="#"></a></li>
+                                <li><a class="fa fa-linkedin" href="#"></a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <section class="pitch">
+                                <div class="field left">
+                                    <div class="penalty-area">
+                                    </div>
+                                </div>
+                                <div class="field right">
+                                    <div class="penalty-area">
+                                    </div>
+                                </div>
+                                <div class="center-circle"></div>
+                                <div class="home-team" >
+
+                                    <div class="player one"> </div>
+
+                                    <div class="player four"></div>
+                                    <div class="player five"></div>
+
+                                    <div class="player ten"></div>
+                                    <div class="player eleven"> </div>
+                                </div>
+                                <div class="visitor-team">
+
+                                    <div class="player eleven"></div>
+
+                                </div >
+                            </section>
+                            <style>
+                                .pitch{
+                                    background-color: #238729;
+                                    width: 590px;
+                                    height: 380px;
+                                    position: relative;
+                                }
+                                .pitch:after{
+                                    content: "";
+                                    border-left: 1px solid white;
+                                    position: absolute;
+                                    top :20px;
+                                    left :295px;
+                                    display:block;
+                                    height:340px;
+                                }
+
+                                .pitch:before{
+                                    content: "";
+                                    border: 1px solid white;
+                                    position: absolute;
+                                    top :20px;
+                                    left :20px;
+                                    display:block;
+                                    width: 550px;
+                                    height:340px;
+                                }
+
+                                .center-circle{
+                                    position: absolute;
+                                    top: 145px;
+                                    left: 250px;
+                                    width: 90px;
+                                    height: 90px;
+                                    border: 1px solid white;
+                                    border-radius: 50%;
+                                }
+                                .center-circle:after{
+                                    position: absolute;
+                                    top: 43px;
+                                    left: 43px;
+                                    width: 1px;
+                                    height: 1px;
+                                    background-color:white;
+                                    content:"";
+                                    border:1px solid white;
+                                }
+
+                                .penalty-area{
+                                    position: absolute;
+                                    height: 140px;
+                                    width: 80px;
+                                    top: 120px;
+                                    border: 1px solid white;
+                                }
+
+                                .left .penalty-area{
+                                    left: 20px;
+                                    border-left: 0;
+                                }
+
+                                .right .penalty-area{
+                                    right: 19px;
+                                    border-right: 0;
+                                }
+
+                                .penalty-area:before{
+                                    position: absolute;
+                                    height: 70px;
+                                    width: 35px;
+                                    top: 35px;
+                                    border: 1px solid white;
+                                    content:"";
+                                }
+                                .left .penalty-area:before{
+                                    left:0px;
+                                    border-left:0;
+                                }
+                                .right .penalty-area:before{
+                                    right:0px;
+                                    border-right:0;
+                                }
+
+                                .penalty-area:after{
+                                    position: absolute;
+                                    height: 2px;
+                                    width: 2px;
+                                    top: 70px;
+                                    background-color:white;
+                                    content:"";
+                                }
+                                .left .penalty-area:after{
+                                    right:15px;
+                                }
+                                .right .penalty-area:after{
+                                    left:15px;
+                                }
+
+                                .player{
+                                    position:absolute;
+                                    border-radius:50%;
+
+                                }
+                                .player:after{
+                                    font-size:30px;
+                                    position:absolute;
+                                    left:3px;
+                                }
+                                .home-team .player{
+
+                                }
+                                .home-team .player.one{
+                                    top:170px;
+                                    left:20px;
+
+                                }
+                                .home-team .player.one:after{
+                                {% for c in Equipe %}
+                                {% if c.positionEquipe == 1 %}
+                                   content: "{{ c.nom }}";
+                                {% endif %}
+                                {% endfor %}
+                                }
+
+                                .home-team .player.four{
+                                    top:100px;
+                                    left:120px;
+                                }
+                                .home-team .player.four:after{
+                                {% for c in Equipe %}
+                                {% if c.positionEquipe == 2 %}
+                                    content: "{{ c.nom }}";
+                                {% endif %}
+                                {% endfor %}
+                                }
+                                .home-team .player.five{
+                                    top:250px;
+                                    left:120px;
+                                }
+                                .home-team .player.five:after{
+                                {% for c in Equipe %}
+                                {% if c.positionEquipe == 3 %}
+                                    content: "{{ c.nom }}";
+                                {% endif %}
+                                {% endfor %}
+                                }
+
+                                .home-team .player.ten{
+                                    top:60px;
+                                    left:260px;
+                                }
+                                .home-team .player.ten:after{
+                                {% for c in Equipe %}
+                                {% if c.positionEquipe == 4 %}
+                                    content: "{{ c.nom }}";
+                                {% endif %}
+                                {% endfor %}
+                                    left:0px;
+                                }
+                                .home-team .player.eleven{
+                                    top:280px;
+                                    left:260px;
+                                }
+                                .home-team .player.eleven:after{
+                                {% for c in Equipe %}
+                                {% if c.positionEquipe == 5 %}
+                                    content: "{{ c.nom }}";
+                                {% endif %}
+                                {% endfor %}
+                                    left:0px;
+                                }
+                                .visitor-team .player{
+
+                                }
+                                .visitor-team .player:after{
+
+
+                                }
+
+                                .visitor-team .player.eleven{
+                                    top:170px;
+                                    right:160px;
+                                }
+                                .visitor-team .player.eleven:after{
+                                {% for c in Equipe %}
+                                {% if c.positionEquipe == 6 %}
+                                    content: "{{ c.nom }}";
+                                {% endif %}
+                                {% endfor %}
+
+                                    left:0px;
+                                }
+                                .player{
+                                    animation-duration:5s;
+                                    animation-timing-function:linear;
+                                    animation-delay:2s;
+                                    animation-iteration-count:infinite;
+                                    animation-direction:alternate;
+                                    animation-play-state:running;
+                                }
+                                .home-team .player.nine{
+                                    animation-name:nine;
+                                }
+                                @keyframes nine
+                                {
+                                    0%   {left:160px; top:225px;}
+                                    25%  {left:200px; top:265px;}
+                                    50%  {left:200px; top:225px;}
+                                    75%  {left:200px; top:185px;}
+                                    100% {left:160px; top:225px;}
+                                }
+                                .home-team .player.eight{
+                                    animation-name:eight;
+                                }
+                                @keyframes eight
+                                {
+                                    0%   {left:160px; top:145px;}
+                                    25%  {left:200px; top:185px;}
+                                    50%  {left:200px; top:145px;}
+                                    75%  {left:200px; top:105px;}
+                                    100% {left:160px; top:145px;}
+                                }
+                            </style>
+
+                        </div><br><br><br>
+
+
+
+
+
+
+                    </div>
+
+                    <aside class="kode-pagesidebar col-md-3">
+
+
+
+                            <!-- Nav tabs -->
+                            <div class="team-detail-table-ap padding-bottom-30-flat">
+                                <H1>Liste des Joueur </H1>
+                                <table class="kode-table">
+                                    <caption>List Joueur</caption>
+                                    <thead>
+                                    <tr>
+
+                                        <th>NOM</th>
+                                        <th>POSITION</th>
+
+                                        <th>MODIFIER</th>
+
+
+
+                                    </tr></thead>
+                                    <tr{% for c in Equipe%}>
+
+                                        <td>{{ c.nom}}</td>
+                                        <td>{{ c.position }}</td>
+
+
+
+
+
+                                        <td bgcolor="Tomato">
+                                            <a href="{{ path('setposition',{'id':c.id}) }}">
+                                                modifier</a>
+
+                                        </td>
+
+
+
+
+                                    </tr{% endfor %}>
+                                </table>
+                            </div>
+
+
+
+
+
+                    </aside>
+
+                </div>
+            </div>
+        </section>
+        <!--// Page Content //-->
+
+    </div>
+    <!--// Main Content //-->
+
+    </div>
+    <br><br><br><br><br><br>
+{% endblock %}

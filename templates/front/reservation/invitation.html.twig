@@ -1,0 +1,50 @@
+{% extends'front/base.html.twig' %}
+{% block title %} Contact US
+{% endblock %}
+{% block style %}
+
+
+{% endblock %}
+
+{% block body %}
+    <div class="kode-subheader subheader-height">
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+
+
+            <div class="container">
+
+
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <img  src="{{ asset('uploads/terrains/' ~reservation.getTerrain().getImage()) }}" alt="" style="width: 550px; height: 350px">
+                        <h3><b>{{ reservation.getTerrain().getDesignation() }}</b></h3>
+                        <h2>{{ reservation.getTerrain().getDescription() }}</h2>
+                        <h2><b>Adresse : </b>{{ reservation.getTerrain().getVille() }} - {{ reservation.getTerrain().getAdresse() }}</h2><br>
+                        <h2><b>Prix de location : </b>{{ reservation.getMontant() }} Dinars</h2><br>
+
+                        {% if reservation.getAcceptee()==0 %}
+                            <a href="{{ path ('acceptation', {'id':reservation.id}) }}') }}" class="btn btn-primary" style="width: 275px">Accepter</a>
+                            <a href="{{ path ('refus', {'id':reservation.id}) }}') }}" class="btn btn-primary" style="width: 275px">Réfuser</a>
+                        {% endif %}
+
+                    </div>
+                    <div class="col-md-3">  <br>  <br> <br>  <br>
+
+                    </div>
+                </div>
+
+            </div>
+    <br>
+
+
+
+
+
+
+{% endblock %}

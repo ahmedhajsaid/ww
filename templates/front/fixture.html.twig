@@ -1,0 +1,221 @@
+{% extends'front/base.html.twig' %}
+{% block title %} fixture
+{% endblock %}
+{% block body %}
+    <div class="kode-subheader subheader-height">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Fixture</h1>
+                </div>
+                <div class="col-md-6">
+                    <ul class="kode-breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader //-->
+
+    <!--// Main Content //-->
+    <div class="kode-content">
+
+        <!--// Page Content //-->
+        <section class="kode-pagesection margin-bottom-40">
+            <div class="container">
+                <div class="row">
+                    <div class="kode-pagecontent col-md-8">
+
+                        <div class="kode-inner-fixer margin-none padding-none">
+                            <div class="kode-fixer-counter">
+                                <h2 class="thbg-color">Next Match Started In</h2>
+                                <div id="kodeCountdown"></div>
+                            </div>
+                            <div class="kode-team-match">
+                                <ul>
+                                    <li><a href="#"><img src="{{ asset('fonts/extra-images/fixer-logo1.png') }}" alt=""></a></li>
+                                    <li class="home-kode-vs"><a href="#" class="kode-modren-btn thbg-colortwo">vs</a></li>
+                                    <li><a href="#"><img src="{{ asset('fonts/extra-images/fixer-logo2.png') }}" alt=""></a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <span class="kode-subtitle">Cycle Racing, Hockey May 18, 2015 14:30 - 16:00 CAMBRIDGESHIRE-UK</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <table class="kode-table kode-table-v2">
+                            <thead>
+                            <tr>
+                                <th>Team</th>
+                                <th>w</th>
+                                <th>d</th>
+                                <th>l</th>
+                                <th>pts</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Chelsea</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Aresenal</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Real Soccer</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Real Madrid</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>City Club</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Aresenal</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Real Soccer</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Real Madrid</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Aresenal</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Aresenal</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Real Soccer</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Real Madrid</td>
+                                <td>11</td>
+                                <td>02</td>
+                                <td>00</td>
+                                <td>42</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="kode-section-title"> <h2>Upcoming Fixture In May 2015</h2> </div>
+                        <div class="kode-fixer-list">
+                            <ul class="table-head thbg-color">
+                                <li><h5>Upcoming Match</h5></li>
+                                <li> <h5>Date & TIme</h5> </li>
+                                <li> <h5>Venue</h5> </li>
+                                <li class="fixer-pagination"> <a href="#" class="fa fa-angle-right"></a> <a href="#" class="fa fa-angle-left"></a> </li>
+                            </ul>
+                            <ul class="table-body">
+                                <li>
+                                    <a href="#" class="list-thumb"><img src="{{ asset('fonts/extra-images/fixer-logo3.png') }}" alt=""> Aresenal</a>
+                                    <span>vs</span>
+                                    <a href="#" class="list-thumb"><img src="{{ asset('fonts/extra-images/fixer-logo4.png') }}" alt=""> FC Bayern</a>
+                                </li>
+                                <li><small>18/05/2015  14:30 - 16:00</small></li>
+                                <li><small>Wembley Stadium</small></li>
+                                <li class="fixer-btn">
+                                    <a href="#">Match Report</a>
+                                    <a href="#">Buy A Ticket</a>
+                                </li>
+                            </ul>
+                            <ul class="table-body">
+                                <li>
+                                    <a href="#" class="list-thumb"><img src="{{ asset('fonts/extra-images/fixer-logo3.png') }}" alt=""> Perspiciatis</a>
+                                    <span>vs</span>
+                                    <a href="#" class="list-thumb"><img src="{{ asset('fonts/extra-images/fixer-logo4.png') }}" alt=""> Chelse</a>
+                                </li>
+                                <li><small>18/05/2015  14:30 - 16:00</small></li>
+                                <li><small>Wembley Stadium</small></li>
+                                <li class="fixer-btn">
+                                    <a href="#">Match Report</a>
+                                    <a href="#">Buy A Ticket</a>
+                                </li>
+                            </ul>
+                            <ul class="table-body">
+                                <li>
+                                    <a href="#" class="list-thumb"><img src="{{ asset('fonts/extra-images/fixer-logo3.png') }}" alt=""> Aresenal</a>
+                                    <span>vs</span>
+                                    <a href="#" class="list-thumb"><img src="{{ asset('fonts/extra-images/fixer-logo4.png') }}" alt=""> FC Bayern</a>
+                                </li>
+                                <li><small>18/05/2015  14:30 - 16:00</small></li>
+                                <li><small>Wembley Stadium</small></li>
+                                <li class="fixer-btn">
+                                    <a href="#">Match Report</a>
+                                    <a href="#">Buy A Ticket</a>
+                                </li>
+                            </ul>
+                            <ul class="table-body">
+                                <li>
+                                    <a href="#" class="list-thumb"><img src="{{ asset('fonts/extra-images/fixer-logo3.png') }}" alt=""> Aresenal</a>
+                                    <span>vs</span>
+                                    <a href="#" class="list-thumb"><img src="{{ asset('fonts/extra-images/fixer-logo4.png') }}" alt=""> FC Bayern</a>
+                                </li>
+                                <li><small>18/05/2015  14:30 - 16:00</small></li>
+                                <li><small>Wembley Stadium</small></li>
+                                <li class="fixer-btn">
+                                    <a href="#">Match Report</a>
+                                    <a href="#">Buy A Ticket</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--// Page Content //-->
+
+    </div>
+    <!--// Main Content //-->
+
+{% endblock %}

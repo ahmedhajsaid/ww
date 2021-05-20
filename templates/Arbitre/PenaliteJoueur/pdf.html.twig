@@ -1,0 +1,37 @@
+
+    <h3 align="center"> LISTE DES Penalites Joueurs </h3>
+
+
+                <table class="table" align="center" border="1">
+
+
+                    <thead>
+                    <tr>
+
+
+
+
+                        <th>joueur</th>
+
+                        <th>penalite</th>
+
+
+
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    {% for pj in penalitesJoueurs %}
+                    <tr  >
+                        <td width="100px">{{ pj.getJoueur().getNom() }} {{ pj.getJoueur().getPrenom() }}</td>
+                        <td width="100px">{{ pj.getPenalite().getDesignation() }}</td>
+
+                    </tr>
+
+{% endfor %}
+
+
+
+
+                    </tbody>
+                </table>

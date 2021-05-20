@@ -1,0 +1,45 @@
+{% extends'Admin/index.html.twig' %}
+{% block title %} Proprietaire de complexe
+{% endblock %}
+{% block body %}
+
+    <body class="">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success mt-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger mt-2">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <h1>Liste des Proprietaire de complexe</h1>
+    <div class="float-right" style="margin-right: 90px">
+
+    </div><br>
+    <table border="0" width="90%" align="center">
+        <tr>
+            <th> ID</th>
+            <th>EMAIL </th>
+            <th> Raison sociale</th>
+            <th>Matricule fiscale </th>
+            <th>TELEPHONE </th>
+            <td>UPDATE</td>
+            <td> Delete</td>
+        </tr>
+        <tr {% for u in Utilisateur %}>
+            <td>{{ u.id }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.raisonSociale }}</td>
+            <td>{{ u.matriculeFiscale }}</td>
+            <td>{{ u.telephone }}</td>
+            <td><a href="{{ path('updatePropAdmin',{'id':u.id}) }}"> Update</a> </td>
+            <td><a href="{{ path('d',{'id':u.id}) }}"> Delete</a> </td>
+        </tr {% endfor %}>
+
+
+    </table>
+
+    </body>
+{% endblock %}

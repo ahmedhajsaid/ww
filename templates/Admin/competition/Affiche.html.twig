@@ -1,0 +1,49 @@
+
+
+
+
+
+
+{% extends 'Admin/index.html.twig' %}
+{% block title%} Liste des Competition{% endblock %}
+{% block body %}
+{% if Competition %}
+<table id="articles" class="table table-striped">
+    <thead>
+    <tr>
+        <th>id</th><th>desgniation</th> <th>ddc</th><th>ddd</th><th>neeq</th><th>categorie</th><th>prix</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr {% for c in Competition %}  >
+        <td>{{ c.id }}</td>
+        <td>{{ c.designation }}</td>
+        <td>{{ c.dateCreation.format('d/m/Y') }}</td>
+        <td>{{ c.dateDebut.format('d/m/Y') }}</td>
+        <td>{{ c.nbreEquipes }}</td>
+        <td>{{ c.categorie.getDesignation() }}</td>
+
+        <td>{{ c.prixParticipation }}</td>
+
+
+        <td style="display: inline-block">
+
+            <form method="post" action="{{ path('supprimer',{'id':c.id}) }}"  onsubmit="return confirm('êtes vous sûr de supprimer ce terrain ? ')">
+
+                <button class="btn btn-danger">Supprimer</button>
+
+
+
+
+
+                <a href="{{ path ('updatecomp', {'id':c.id}) }}" class="btn btn-success" >Modifier</a>
+            </form>
+        </td>
+    </tr {% endfor %} >
+    </tbody>
+</table>
+{% else %}
+    <p>Aucun Competition</p>
+{% endif %}
+{% endblock %}

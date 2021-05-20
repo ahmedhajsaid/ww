@@ -1,0 +1,64 @@
+
+
+{% extends 'Admin/index.html.twig' %}
+
+
+
+
+
+{% block title%} Liste {% endblock %}
+{% block body %}
+
+
+<head>
+    <meta charset='utf-8' />
+    <br>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js" integrity="sha256-ekrJn2FeZaiUFq99QswpQCUTME/HxaDfX7R8INzKJGE=" crossorigin="anonymous"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale:'fr',
+                timeZone:'Europe/Paris',
+                headerToolbar:{
+                    start:'prev,next today',
+                    center:'title',
+                    end:'dayGridMonth,timeGridWeek'
+                },
+                events:{{ data|raw }},
+                editable: true,
+                eventResizableFromStart: true
+            });
+            calendar.on('eventChange', (e) => {
+                let url = `/api/${e.event.id}/updatecomp`
+                let donnees = {
+                    "designation": e.event.designation,
+                    "dateCreation": e.event.dateCreation,
+                    "dateDebut": e.event.dateDebut
+
+
+                }
+
+                let xhr = new XMLHttpRequest
+                xhr.open("PUT", url)
+                xhr.send(JSON.stringify(donnees))
+            })
+            calendar.render();
+        });
+
+    </script>
+    <style>
+        #calendar{
+            width: 80%;
+            height: 60%;
+        }
+    </style>
+</head>
+
+
+<div id='calendar'></div>
+{% endblock %}

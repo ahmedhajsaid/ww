@@ -1,0 +1,65 @@
+{% extends 'Admin/index.html.twig' %}
+{% block title%} Liste des Articles par prix{% endblock %}
+{% block body %}
+    {{ form_start(form) }}
+    <div class="form-row align-items-end" >
+        <div class="col">
+            {{ form_row(form.minPrice) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.maxPrice) }}
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Rechercher</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+    {% if Competition %}
+        <table class="table table-striped table-advance table-hover">
+            <h4><i class="fa fa-angle-right">
+                    <div class="float-right" style="margin-right: 90px">
+                        <a href="{{ path('ajout') }}" class="btn btn-primary"> Nouveau Competition</a>
+                    </div><br>
+                </i> </h4>
+            <hr>
+            <thead>
+            <tr>
+                <th>id</th><th>desgniation</th> <th>ddc</th><th>ddd</th><th>neeq</th><th>categorie</th><th>prix</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr {% for c in Competition %}  >
+                <td>{{ c.id }}</td>
+                <td>{{ c.designation }}</td>
+                <td>{{ c.dateCreation.format('d/m/Y') }}</td>
+                <td>{{ c.dateDebut.format('d/m/Y') }}</td>
+                <td>{{ c.nbreEquipes }}</td>
+                <td>{{ c.categorie.getDesignation() }}</td>
+
+                <td>{{ c.prixParticipation }}</td>
+
+                <td style="display: inline-block">
+
+                    <form method="post" action="{{ path('supprimer',{'id':c.id}) }}"  onsubmit="return confirm('êtes vous sûr de supprimer ce terrain ? ')">
+
+                        <button class="btn btn-danger"><i class="fa fa-trash-o "></i>Supprimer</button>
+
+
+
+
+
+                        <a href="{{ path ('updatecomp', {'id':c.id}) }}" class="btn btn-success" ><i class="fa fa-trash-o "></i>Modifier</a>
+                    </form>
+                </td>
+
+            </tr {% endfor %} >
+
+            </tbody>
+        </table>
+    {% else %}
+        <p>Aucun articles</p>
+    {% endif %}
+{% endblock %}
