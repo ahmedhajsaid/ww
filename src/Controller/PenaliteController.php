@@ -19,9 +19,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PenaliteController extends AbstractController
 {
-/**
-*@Route("/",name="article_list")
-*/
+    /**
+     *@Route("/",name="article_list")
+     */
     public function home(Request$request ,  PenaliteRepository $PenaliteRepository)
     {
         /*$propertySearch = new PropertySearch();
@@ -49,7 +49,7 @@ class PenaliteController extends AbstractController
                 $penalite= $PenaliteRepository->findAll();
 
 
-                return $this->render('penalite/index.html.twig', ['controller_name' => 'PenaliteController',]);
+        return $this->render('penalite/index.html.twig', ['controller_name' => 'PenaliteController',]);
 
     }
 
@@ -104,7 +104,21 @@ class PenaliteController extends AbstractController
         }
         return $this->render('Arbitre/penalite/Update.html.twig',['form' => $form->createView()]);
     }
+    /**
 
+     * @Route("/AllPenalite",name="AllPenalite")
+     */
+    function AllPenalite(NormalizerInterface $normalizer)
+    {
+        $repository=$this->getDoctrine()->getRepository(Penalite::class);
+        $penalite = $repository->findAll();
+        $jsonContent = $normalizer->normalize($penalite, 'json', ['groups' => 'Penalite']);
+        return new Response(json_encode($jsonContent));
+
+        return $this->render('Arbitre/penalite/listePenalites.html.twig', ['penalites' => $penalite]);
+
+
+    }
 
     /**
      * @Route("/penalite/supp/{id}", name="dp", methods="DELETE")
@@ -124,22 +138,19 @@ class PenaliteController extends AbstractController
         return $this->redirectToRoute("AffichePenalites");
     }
 
+
     /**
-
-     * @Route("/AllPenalite",name="AllPenalite")
+     * @Route ("/allPenalites", name ="allPenalites")
      */
-    function AllPenalite(NormalizerInterface $normalizer)
+    public function allPenalites( NormalizerInterface $normalizer)
     {
-        $repository=$this->getDoctrine()->getRepository(Penalite::class);
+        $repository = $this->getDoctrine()->getRepository(Penalite::class);
         $penalite = $repository->findAll();
-        $jsonContent = $normalizer->normalize($penalite, 'json', ['groups' => 'Penalite']);
+
+        $jsonContent = $normalizer->normalize($penalite, 'json', ['groups'=>'Penalite']);
+
         return new Response(json_encode($jsonContent));
-
-        return $this->render('Arbitre/penalite/listePenalites.html.twig', ['penalites' => $penalite]);
-
-
     }
-
 
     /**
 
@@ -156,7 +167,7 @@ class PenaliteController extends AbstractController
 
 
     /**
-     * @Route("/AddPenalite",name="AddPenalite")
+     * @Route("/AddPenalite/{designation}/{nbrePointsRetires}",name="AddPenalite")
      */
     function AddPenalite(Request $request, NormalizerInterface $normalizer)
     {
@@ -202,7 +213,56 @@ class PenaliteController extends AbstractController
 
     }
 
+    /**
+     * @Route ("/modifierPenaliteJson/{id}/{designation}/{nbrePointsRetires}", name ="modifierPenaliteJson")
+     */
+    public function modifierPenaliteJson(Request $request, $id, NormalizerInterface $normalizer)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $penalite = $em->getRepository(Penalite::class)->find($request->get('id'));
 
+        // $user = $terrain -> getComplexe();
+        //$cat = $em->getRepository(Penalite::class)->find($request->get('penalite'));
+        $penalite->setDesignation($request->get('designation'));
+        $penalite->setNbrePointsRetires($request->get('nbrePointsRetires'));
+
+        //->setCategorie($cat);
+
+        $em->flush();
+
+        $jsonContent = $normalizer->normalize($penalite, 'json', ['groups'=>'Penalite']);
+        return new Response("Terrain modifié avec succès".json_encode($jsonContent));
+    }
+
+    /**
+     * @Route ("/findPenalite/{id}", name ="findPenalite")
+     */
+    public function findPenalite(Request $request, $id, NormalizerInterface $normalizer)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $penalite = $em->getRepository(Penalite::class)->find($id);
+        $jsonContent = $normalizer->normalize($penalite, 'json', ['groups'=>'Penalite']);
+
+        return new Response(json_encode($jsonContent));
+    }
+
+
+
+
+
+    /**
+     * @Route ("/ltp", name ="ltp")
+     */
+    public function ltp( NormalizerInterface $normalizer)
+    {
+        $repository = $this->getDoctrine()->getRepository(Penalite::class);
+
+        $penalite = $repository->findAll();
+
+        $jsonContent = $normalizer->normalize($penalite, 'json', ['groups'=>'Penalite']);
+
+        return new Response(json_encode($jsonContent));
+    }
 
 
     /*
@@ -210,17 +270,17 @@ class PenaliteController extends AbstractController
          * @Route("/searchPenalite ", name="searchPenalite")
          */
 
- /*  public function searchPenalite(Request $request,NormalizerInterface $Normalizer)
-    {
-        $repository = $this->getDoctrine()->getRepository(Penalite::class);
-        $requestString=$request->get('searchValue');
-        $Penalite = $repository->findPenaliteByNsc($requestString);
-        $jsonContent = $Normalizer->normalize($Penalite, 'json',['groups'=>'Penalites:read']);
-        $retour=json_encode($jsonContent);
-        return new Response($retour);
+    /*  public function searchPenalite(Request $request,NormalizerInterface $Normalizer)
+       {
+           $repository = $this->getDoctrine()->getRepository(Penalite::class);
+           $requestString=$request->get('searchValue');
+           $Penalite = $repository->findPenaliteByNsc($requestString);
+           $jsonContent = $Normalizer->normalize($Penalite, 'json',['groups'=>'Penalites:read']);
+           $retour=json_encode($jsonContent);
+           return new Response($retour);
 
-    }
- **/
+       }
+    **/
     /**
      * @Route("/searchTerrain ", name="searchTerrain")
      */

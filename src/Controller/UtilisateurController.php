@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
+use App\Entity\UtilisateurSearch;
 use App\Form\ClientType;
 use App\Form\ProprietaireType;
+use App\Form\UtilisateurSearchType;
 use App\Form\UtilisateurType;
 use App\Form\AdminType;
 use App\Repository\UtilisateurRepository;
@@ -433,7 +435,7 @@ class UtilisateurController extends AbstractController
         $em->persist($utilisateur);
         $em->flush();
         $email = (new Email())
-            ->from('complexsportiftunis@gmail.com')
+            ->from('num.20746081@gmail.com')
             ->to($utilisateur->getEmail())
             ->subject('you have created a user!')
             ->text('Complexes Sportif Sending you E-mail to tell you that you have successfully created an account!');
@@ -488,6 +490,24 @@ class UtilisateurController extends AbstractController
 
     }
 
+    /**
+     * @Route("/UpdateMdpp/{email}/{password}", name="Use")
+     */
+
+    public function UpdateMdp1($email,$password,NormalizerInterface $Normalizer){
+        $em=$this->getDoctrine()->getManager();
+        $utilisateur= $em->getRepository(Utilisateur::class)->findby(array('email' => $email));
+        foreach ($utilisateur as $u) {
+            $u->setEmail($email);
+            $u->SetPassword($password);
+        }
+        $em->flush();
+        $jsonContent=$Normalizer->normalize($utilisateur,'json',['groups'=>'post:read']);
+        return new Response("Password updated successfully".json_encode($jsonContent));
+
+
+    }
+
 
     /**
      * @Route("/SuppUser/{id}", name="User")
@@ -527,12 +547,12 @@ class UtilisateurController extends AbstractController
      * @Route("/user/getPasswordByEmail", name="app_password")
      */
 
-    public function getPassswordByEmail(Request $request) {
+    public function getPassswordByEmail(Request $request,$password) {
 
         $email = $request->get('email');
         $user = $this->getDoctrine()->getManager()->getRepository(Utilisateur::class)->findOneBy(['email'=>$email]);
         if($user) {
-            $password = $user->getPassword();
+            // $password = $user->getPassword();
             $serializer = new Serializer([new ObjectNormalizer()]);
             $formatted = $serializer->normalize($password);
             return new JsonResponse($formatted);
@@ -544,6 +564,27 @@ class UtilisateurController extends AbstractController
 
     }
 
+    /**
+     *@Route("/rechercher",name="recherche")
+     */
+    public function homer(Request $request)
+    {
+        $propertySearch = new UtilisateurSearch();
+        $form = $this->createForm(UtilisateurSearchType::class,$propertySearch);
+        $form->handleRequest($request);
+        $articles= [];
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $nom = $propertySearch->getEmail();
+            if ($nom!="")
+                //si on a fourni un nom d'article on affiche tous les articles ayant ce nom
+                $articles= $this->getDoctrine()->getRepository(Utilisateur::class)->findBy(['nom' => $nom] );
+            else
+                //si si aucun nom n'est fourni on affiche tous les articles
+                $articles= $this->getDoctrine()->getRepository(Utilisateur::class)->findAll();
+        }
+        return  $this->render('Admin/utilisateur/recherche.html.twig',[ 'form' =>$form->createView(), 'Utilisateur' => $articles]);
+    }
 
 
 

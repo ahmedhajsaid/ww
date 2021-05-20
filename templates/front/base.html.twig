@@ -56,10 +56,13 @@
                     </div>
                     <div class="col-md-6">
                         <ul class="kode-userinfo">
-                            {% if is_granted('ROLE_USER') %}
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a>
+                            <li><a href="cart"><i class="fa fa-shopping-cart"></i> Cart</a>
                             </li>
+                            {% if is_granted('ROLE_USER') %}
+                                <li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a>
+                                </li>
                             {% endif %}
+
                             {% if is_granted('ROLE_USER') %}
                             <li><a href="{{ asset('/CompteClient') }}"><i class="fa fa-user"></i> My Account</a></li>
                             {% endif %}
@@ -111,7 +114,8 @@
 
                         </li>
 
-                        <li><a href="{{ asset('/shop') }}">Shop</a>
+                        <li>
+                            <a href="{{ asset('/shop') }}">Shop</a>
 
                         </li>
                         <li><a href="{{ asset('/reservation') }}">Reservation</a>

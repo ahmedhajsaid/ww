@@ -7,12 +7,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Produit
+ * Comp
  *
- * @ORM\Table(name="produit")
+ * @ORM\Table(name="comp")
  * @ORM\Entity
  */
-class Produit
+class Comp
 {
     /**
      * @var int

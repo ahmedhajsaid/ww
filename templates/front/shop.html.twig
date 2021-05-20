@@ -26,236 +26,31 @@
         <!--// Page Content //-->
         <section class="kode-pagesection padding-bottom-18-flat">
             <div class="container">
-                <div class="row">
+                <li class="row">
 
                     <div class="col-md-12">
                         <div class="kode-shop-list">
 
                             <ul class="row">
+                                {% for product in produits %}
                                 <li class="col-md-3 col-sm-6">
                                     <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product1.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
+                                        <figure><a href="#"><img src="{{ asset( product.image ) }}" alt=""></a></figure>
+                                        <figcaption>
+                                            <h4><a href="#">{{  product.name }}</a></h4>
+
+                                        </figcaption>
                                         </figure>
                                         <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
+                                            <a href="{{path("cart_add", {id: product.id})}}" class="btn btn-success">
+                                                <i class="bi bi-cart-plus"></i> Ajouter
+                                            </a>
+                                            <span>{{  product.price }} TND</span>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product2.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product3.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product1.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product3.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product2.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product3.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product1.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product3.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product2.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product3.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product1.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product3.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product3.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product1.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="col-md-3 col-sm-6">
-                                    <div class="kode-pro-inner">
-                                        <figure><a href="#"><img src="{{ asset('fonts/extra-images/shop-product3.jpg') }}" alt=""></a>
-                                            <figcaption>
-                                                <h4><a href="#">Product Name</a></h4>
-                                                <p class="kode-pro-cat"><a href="#">Categories</a></p>
-                                            </figcaption>
-                                        </figure>
-                                        <div class="kode-pro-info">
-                                            <a href="#" class="add_to_cart"><i class="fa fa-shopping-cart"></i> Add To Cart</a>
-                                            <span>55$</span>
-                                        </div>
-                                    </div>
-                                </li>
+
+                                {% endfor %}
                             </ul>
 
                         </div>
@@ -264,7 +59,7 @@
                             <a href="#"><i class="fa fa-angle-double-left"></i></a>
                             <a href="#">1</a>
                             <a href="#">2</a>
-                            <span>3</span>
+                            <a href="#">2</a>
                             <a href="#">4</a>
                             <a href="#"><i class="fa fa-angle-double-right"></i></a>
                         </div>
@@ -272,7 +67,6 @@
                     </div>
 
                 </div>
-            </div>
         </section>
         <!--// Page Content //-->
 

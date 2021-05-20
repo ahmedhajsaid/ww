@@ -22,11 +22,5 @@ class BlogController extends AbstractController
     {
         return $this->render('front/reservation.html.twig');
     }
-    /**
-     * @Route("/shop", name="shop")
-     */
-    public function shop(): Response
-    {
-        return $this->render('front/shop.html.twig');
-    }
+
 }

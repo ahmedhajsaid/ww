@@ -14,14 +14,25 @@
             {{ message }}
         </div>
     {% endfor %}
-    <br>  <br>  <br>  <br>
-    <button class="btn btn-success"><a href="{{ asset('/rechercher') }}"> Recherche </a></button>
-
     <h1>Liste des Arbitre</h1>
     <div class="float-right" style="margin-right: 90px">
 
     </div><br>
+    {{ form_start(form) }}
 
+
+    <div class="form-row align-items-end" >
+        <div class="col">
+            {{ form_row(form.email) }}
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Rechercher</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
     <table border="0" width="90%" align="center">
         <tr>
             <th> ID</th>
@@ -30,10 +41,10 @@
             <th>PRENOM </th>
 
             <th>Equipe </th>
-                   <th>TELEPHONE </th>
+            <th>TELEPHONE </th>
             {% if is_granted('ROLE_PROP')%}
-            <td>UPDATE</td>
-            <td> Delete</td>
+                <td>UPDATE</td>
+                <td> Delete</td>
             {% endif %}
         </tr>
         <tr {% for u in Utilisateur %}>
@@ -44,8 +55,8 @@
             <td>{{ u.equipe }}</td>
             <td>{{ u.telephone }}</td>
             {% if is_granted('ROLE_PROP')%}
-            <td><a href="{{ path('a',{'id':u.id}) }}"> Update</a> </td>
-            <td><a href="{{ path('d',{'id':u.id}) }}"> Delete</a> </td>
+                <td><a href="{{ path('a',{'id':u.id}) }}"> Update</a> </td>
+                <td><a href="{{ path('d',{'id':u.id}) }}"> Delete</a> </td>
             {% endif %}
         </tr {% endfor %}>
     </table>
